@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  in: MyString
+  bus_type: 1
+  provider: 
+
+two:
+  in: MyString
+  bus_type: 1
+  provider: 
