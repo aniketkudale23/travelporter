@@ -1,0 +1,7 @@
+<%= form_for @routes ,(url: '/search'), remote: true do |f| %>
+
+
+
+  <%= f.text_field :source, :class => 'form-control' %>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <% end %>

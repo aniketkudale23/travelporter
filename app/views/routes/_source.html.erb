@@ -1,0 +1,22 @@
+<%- model_class = Route -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  
+  <tbody>
+      <% if @sources %>
+    <% @sources.each do |route| %>
+      <tr>
+        <td><%= route[0] %></td>
+        <td><%= route[1] %></td>
+        <td><%= route[2] %></td>
+        
+          
+      </tr>
+    <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+

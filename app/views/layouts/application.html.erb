@@ -4,11 +4,19 @@
     <title>Travelporter</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag  "application", media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => 'reload' %>
+   <!-- this should go after your </body> -->
 
+  
+   
+  </head>
+  
   <body>
     <%= yield %>
+      <% if logged_in? %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+       <%= link_to "Home Page", homepage_path %>
+  <% end  %>
   </body>
 </html>

@@ -3,12 +3,25 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+
+<h1>
+   
+  <%#= @provider.name %>
+</h1>
+<% if logged_in? %>
+<%= link_to "New Timmings", new_timming_url %>
+ <p>
+  <%= gravatar_for(@provider) %>
+        </p>
+
+<% end  %>
+
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @provider.name %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
+<%= link_to t('.list_of_providers', :default => t("helpers.links.back")),
               providers_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_provider_path(@provider), :class => 'btn btn-default' %>

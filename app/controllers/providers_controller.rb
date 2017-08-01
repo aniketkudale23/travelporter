@@ -28,6 +28,7 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       if @provider.save
+        flash[:success] = "Welcome to the Sample App!"
         format.html { redirect_to @provider, notice: 'Provider was successfully created.' }
         format.json { render :show, status: :created, location: @provider }
       else
@@ -69,6 +70,6 @@ class ProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def provider_params
-      params.require(:provider).permit(:name)
+      params.require(:provider).permit(:name,:email,:password)
     end
 end

@@ -15,6 +15,7 @@ class TimmingsController < ApplicationController
   # GET /timmings/new
   def new
     @timming = Timming.new
+    @routes = Route.all
   end
 
   # GET /timmings/1/edit
@@ -24,8 +25,14 @@ class TimmingsController < ApplicationController
   # POST /timmings
   # POST /timmings.json
   def create
+   
+    params[:timming][:dept_time] = Time.strptime(params[:timming][:dept_time], '%m/%d/%Y %H:%M %p').to_s
     @timming = Timming.new(timming_params)
-
+   # Timming.new(:in => params[:timming][:in], :bus_type => params[:timming][:bus_type])
+   
+    @timming.route = Route.find(params[:timming][:route_id])
+    @timming.provider = Provider.find(params[:timming][:provider_id])
+    
     respond_to do |format|
       if @timming.save
         format.html { redirect_to @timming, notice: 'Timming was successfully created.' }
@@ -69,6 +76,6 @@ class TimmingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timming_params
-      params.require(:timming).permit(:in, :bus_type, :provider)
+      params.require(:timming).permit(:dept_time, :bus_type)
     end
 end

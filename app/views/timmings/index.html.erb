@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:in) %></th>
+      <th><%= model_class.human_attribute_name(:dept_time) %></th>
       <th><%= model_class.human_attribute_name(:bus_type) %></th>
       <th><%= model_class.human_attribute_name(:provider_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -17,7 +17,8 @@
     <% @timmings.each do |timming| %>
       <tr>
         <td><%= link_to timming.id, timming_path(timming) %></td>
-        <td><%= Time.parse(timming.in).strftime('%A-%B-%d') %></td>
+        
+        <td><%= timming.dept_time %></td>
         <td><%= timming.bus_type %></td>
         <td><%= timming.provider_id %></td>
         <td><%=l timming.created_at %></td>

@@ -1,0 +1,38 @@
+ <%= form_tag("/search", method: "post",:id => 'find_form', remote: true)  do %>
+ <label>Search</label>
+ <%= text_field_tag :search %>
+ <label>Destination</label>
+ <%= text_field_tag :destination %>
+ <%= submit_tag "Search", :name => nil %> 
+<% end %> 
+ 
+ <%#*<form method = 'post' action = '/search'>%>
+     <%#*<label for="source">Source</label>%>
+     <%#*<input type="text" name="search" id = 'search'><br>%>
+     <%#*<label for="des">Destination</label>%>
+     <%#*<input type="text" name="destination" id="destination"><br>%>
+     <%#*<input type="submit" value="search">%>
+     <%#*</form>%>
+     
+ 
+ <% binding.pry %>
+
+ <div id = 'result'></div>
+ 
+ 
+
+ 
+ <%  binding.pry %>
+ 
+ <div>
+  <div id="items_grid" >
+    <%= render partial: 'source', locals: {sources: sources}  %>
+  </div>
+</div>
+ 
+
+ 
+ 
+ 
+
+///pune to kolhapur all timmings and buses find here above
