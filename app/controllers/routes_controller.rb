@@ -105,7 +105,7 @@ class RoutesController < ApplicationController
         
       @dist_cal  <<  source.distance_to(dest, :units => :kms) rescue 0.0
       header = ["source","destination","date"]
-sql = "SELECT routes.* FROM routes  LEFT JOIN timmings ON timmings.route_id = route_id WHERE source ='#{params[:search]}'"
+sql = "SELECT routes.*, timmings.dept_time FROM routes JOIN timmings ON timmings.route_id = route_id WHERE source ='#{params[:search]}'"
 
       @sources = ActiveRecord::Base.connection.execute(sql).to_a
       @sourcess  =    @sources.select do |source_arr|
@@ -115,11 +115,12 @@ sql = "SELECT routes.* FROM routes  LEFT JOIN timmings ON timmings.route_id = ro
        
         source_arr.map!{|source| source = "#{header[index+=1]}:#{source}"  }
       end
-       binding.pry
-       respond_to do |format|
-         format.html { redirect_to '/search' }
-    format.js  
-       end
+      
+
+#       respond_to do |format|
+#         format.html { redirect_to '/search' }
+#    format.js  
+#       end
     end
      
      #  format.json{}

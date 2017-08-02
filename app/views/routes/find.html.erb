@@ -1,4 +1,4 @@
- <%= form_tag("/search", method: "post",:id => 'find_form', remote: true)  do %>
+ <%= form_tag("/find", method: "post",:id => 'find_form')  do %>
  <label>Search</label>
  <%= text_field_tag :search %>
  <label>Destination</label>
@@ -15,20 +15,43 @@
      <%#*</form>%>
      
  
- <% binding.pry %>
+
 
  <div id = 'result'></div>
+ <%# binding.pry %>
+ <% if @sources %>
+<select>
+<%= @sources.each do |source|%>
+  <span id ='op'></span>
+ 
+<option> <%= source[1] %> </option>
+<option> <%= source.last %> </option>
+
+<% end %>
+
+</select>
+ 
+ <select>
+     
+ <%= @dist_cal.each do |dist|%>
+  <span id ='op'></span>
+<option> <%= dist %> </option>
+
+<% end %>
+</select>
+ 
+<% end %>
  
  
 
  
- <%  binding.pry %>
  
- <div>
-  <div id="items_grid" >
-    <%= render partial: 'source', locals: {sources: sources}  %>
-  </div>
-</div>
+ 
+ <%#*<div>%>
+  <%#*<div id="items_grid" >%>
+    <%#= render partial: 'source', locals: {sources: sources}  %>
+  <%#*</div>%>
+<%#*</div>%>
  
 
  
